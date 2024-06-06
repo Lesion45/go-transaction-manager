@@ -1,0 +1,14 @@
+env: "local" # options: local dev prod
+
+storage:
+  username: "postgres"
+  host: "localhost"
+  port: "5436"
+  password: "admin"
+  dbname: "postgres"
+  sslmode: "disable"
+
+http-server:
+  address: "localhost:5000"
+  timeout: 10s
+  idle-timeout: 60s
