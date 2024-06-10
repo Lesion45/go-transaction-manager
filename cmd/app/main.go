@@ -1,15 +1,15 @@
 package main
 
 import (
-	"account-management-service/config"
-	"account-management-service/pkg/logger"
 	"github.com/gin-gonic/gin"
+	"go-transaction-manager/config"
+	"go-transaction-manager/pkg/logger"
 	"log/slog"
 	"net/http"
 )
 
 type App struct {
-	server *http.Server
+	srv    *http.Server
 	router *gin.Engine
 	// storage *postgres.Storage
 	log *slog.Logger
