@@ -20,23 +20,15 @@ type HTTPServer struct {
 }
 
 type Storage struct {
-	Username string `yaml:"username"`
 	Host     string `yaml:"host"`
+	Port     int    `yaml:"port"`
+	User     string `yaml:"user"`
 	Password string `yaml:"password"`
-	Port     string `yaml:"port"`
-	DBName   string `yaml:"dbname"`
-	SSLMode  string `yaml:"sslmode"`
+	DBname   string `yaml:"dbname"`
 }
 
 func MustLoad() *Config {
-	// TODO: DELETE WHEN UPLOAD ON PROD
-	os.Setenv("CONFIG-PATH", "C:/Users/maus1/GolandProjects/pinterest-clone/config/local.yml")
-
-	configPath := os.Getenv("CONFIG-PATH")
-
-	if configPath == "" {
-		log.Fatal("Config path is not set")
-	}
+	configPath := "/app/config/config.yaml"
 
 	// check if file exists
 	if _, err := os.Stat(configPath); os.IsNotExist(err) {

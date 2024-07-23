@@ -1,14 +1,13 @@
 env: "local" # options: local dev prod
 
 storage:
-  username: "postgres"
-  host: "localhost"
-  port: "5436"
+  host: "db"
+  port: 5432
+  user: "postgres"
   password: "admin"
-  dbname: "postgres"
-  sslmode: "disable"
+  dbname: "avito"
 
 http-server:
-  address: "localhost:5000"
+  address: "0.0.0.0:5000"
   timeout: 10s
   idle-timeout: 60s
