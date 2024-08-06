@@ -1,0 +1,195 @@
+basePath: api/v1
+definitions:
+  response.Balance:
+    properties:
+      balance:
+        type: number
+    type: object
+  response.Response:
+    properties:
+      error:
+        type: string
+      status:
+        type: string
+    type: object
+  v1.reservationCommitReservedBalance:
+    properties:
+      amount:
+        type: number
+      info:
+        type: string
+      order_id:
+        type: string
+      service-id:
+        type: string
+      user-id:
+        type: string
+    required:
+    - amount
+    - order_id
+    - service-id
+    - user-id
+    type: object
+  v1.reservationReserveBalance:
+    properties:
+      amount:
+        type: number
+      info:
+        type: string
+      order_id:
+        type: string
+      service-id:
+        type: string
+      user-id:
+        type: string
+    required:
+    - amount
+    - order_id
+    - service-id
+    - user-id
+    type: object
+  v1.userAddBalanceInput:
+    properties:
+      amount:
+        type: number
+      user-id:
+        type: string
+    required:
+    - amount
+    - user-id
+    type: object
+  v1.userGetBalanceInput:
+    properties:
+      user-id:
+        type: string
+    required:
+    - user-id
+    type: object
+host: localhost:5000
+info:
+  contact: {}
+  description: This is the solution for the Avito backend intership by Lesion45
+  title: Avito Intership
+  version: "1.0"
+paths:
+  /api/v1/reservation/commit_balance:
+    post:
+      consumes:
+      - application/json
+      description: Returns status of operation
+      parameters:
+      - description: input
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/v1.reservationCommitReservedBalance'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+      summary: Commit reserved user balance
+      tags:
+      - Balance
+  /api/v1/reservation/reserve_balance:
+    post:
+      consumes:
+      - application/json
+      description: Returns status of operation
+      parameters:
+      - description: input
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/v1.reservationReserveBalance'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+      summary: Reserve user balance
+      tags:
+      - Balance
+  /api/v1/user/add_balance:
+    post:
+      consumes:
+      - application/json
+      description: Returns status of operation
+      parameters:
+      - description: input
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/v1.userAddBalanceInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+      summary: Add balance to user
+      tags:
+      - Balance
+  /api/v1/user/get_balance:
+    get:
+      consumes:
+      - application/json
+      description: Returns user balance
+      parameters:
+      - description: input
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/v1.userGetBalanceInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Balance'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+      summary: Get user balance
+      tags:
+      - Balance
+swagger: "2.0"

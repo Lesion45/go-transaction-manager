@@ -1,0 +1,296 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "This is the solution for the Avito backend intership by Lesion45",
+        "title": "Avito Intership",
+        "contact": {},
+        "version": "1.0"
+    },
+    "host": "localhost:5000",
+    "basePath": "api/v1",
+    "paths": {
+        "/api/v1/reservation/commit_balance": {
+            "post": {
+                "description": "Returns status of operation",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Balance"
+                ],
+                "summary": "Commit reserved user balance",
+                "parameters": [
+                    {
+                        "description": "input",
+                        "name": "input",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/v1.reservationCommitReservedBalance"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/response.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/response.Response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/response.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/reservation/reserve_balance": {
+            "post": {
+                "description": "Returns status of operation",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Balance"
+                ],
+                "summary": "Reserve user balance",
+                "parameters": [
+                    {
+                        "description": "input",
+                        "name": "input",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/v1.reservationReserveBalance"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/response.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/response.Response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/response.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/user/add_balance": {
+            "post": {
+                "description": "Returns status of operation",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Balance"
+                ],
+                "summary": "Add balance to user",
+                "parameters": [
+                    {
+                        "description": "input",
+                        "name": "input",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/v1.userAddBalanceInput"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/response.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/response.Response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/response.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/user/get_balance": {
+            "get": {
+                "description": "Returns user balance",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Balance"
+                ],
+                "summary": "Get user balance",
+                "parameters": [
+                    {
+                        "description": "input",
+                        "name": "input",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/v1.userGetBalanceInput"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/response.Balance"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/response.Response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/response.Response"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "response.Balance": {
+            "type": "object",
+            "properties": {
+                "balance": {
+                    "type": "number"
+                }
+            }
+        },
+        "response.Response": {
+            "type": "object",
+            "properties": {
+                "error": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                }
+            }
+        },
+        "v1.reservationCommitReservedBalance": {
+            "type": "object",
+            "required": [
+                "amount",
+                "order_id",
+                "service-id",
+                "user-id"
+            ],
+            "properties": {
+                "amount": {
+                    "type": "number"
+                },
+                "info": {
+                    "type": "string"
+                },
+                "order_id": {
+                    "type": "string"
+                },
+                "service-id": {
+                    "type": "string"
+                },
+                "user-id": {
+                    "type": "string"
+                }
+            }
+        },
+        "v1.reservationReserveBalance": {
+            "type": "object",
+            "required": [
+                "amount",
+                "order_id",
+                "service-id",
+                "user-id"
+            ],
+            "properties": {
+                "amount": {
+                    "type": "number"
+                },
+                "info": {
+                    "type": "string"
+                },
+                "order_id": {
+                    "type": "string"
+                },
+                "service-id": {
+                    "type": "string"
+                },
+                "user-id": {
+                    "type": "string"
+                }
+            }
+        },
+        "v1.userAddBalanceInput": {
+            "type": "object",
+            "required": [
+                "amount",
+                "user-id"
+            ],
+            "properties": {
+                "amount": {
+                    "type": "number"
+                },
+                "user-id": {
+                    "type": "string"
+                }
+            }
+        },
+        "v1.userGetBalanceInput": {
+            "type": "object",
+            "required": [
+                "user-id"
+            ],
+            "properties": {
+                "user-id": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
