@@ -143,7 +143,7 @@ curl --location --request GET 'http://localhost:5000/api/v1/user/get_balance' \
 ## API Documentation
 API documentation is available at:
 
-Swagger UI: http://localhost/swagger
+Swagger UI: https://lesion45.github.io/go-transaction-manager
 ## TODO
 * Clean the code
 * Add middleware for collecting metrics
